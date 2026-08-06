@@ -211,9 +211,7 @@ class ThreadPool {
 
     class ScopedBuildOmpSetter {
         int omp_before;
-#ifdef OPENBLAS_OS_LINUX
-        int blas_thread_before;
-#endif
+
      public:
         explicit ScopedBuildOmpSetter(int num_threads = 0);
 
@@ -222,9 +220,7 @@ class ThreadPool {
 
     class ScopedSearchOmpSetter {
         int omp_before;
-#ifdef OPENBLAS_OS_LINUX
-        int blas_thread_before;
-#endif
+
      public:
         explicit ScopedSearchOmpSetter(int num_threads = 1);
 

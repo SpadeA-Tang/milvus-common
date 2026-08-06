@@ -138,7 +138,8 @@ target_link_libraries(milvus-common PUBLIC
 
 target_link_libraries(milvus-common PUBLIC OpenMP::OpenMP_CXX)
 
-# thread_pool.cc uses openblas-specific API (openblas_set_num_threads) under OPENBLAS_OS_LINUX
+# Keep OpenBLAS as a public dependency for downstream Knowhere consumers. The
+# scoped thread setters use OpenMP only and must not mutate OpenBLAS global state.
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
     find_package(OpenBLAS CONFIG REQUIRED)
     target_link_libraries(milvus-common PUBLIC OpenBLAS::OpenBLAS)
