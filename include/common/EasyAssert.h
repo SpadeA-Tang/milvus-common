@@ -73,6 +73,10 @@ enum ErrorCode {
     InsufficientResource = 2043,
     // milvus-storage related error code
     StorageError = 2044,
+    // Index building found that the target field has no indexable data. This
+    // is a control-flow signal: the build should be treated as finished
+    // without producing index files, rather than retried or reported failed.
+    IndexBuildSkip = 2047,
 
     KnowhereError = 2099,
 };
